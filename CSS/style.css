@@ -1,0 +1,28 @@
+h1 {
+	font-size: 2em;
+	font-weight: bold;
+	text-align:center;
+}
+
+#stop {
+	display:none;
+}
+
+.button {
+	cursor:pointer;
+	padding:5px;
+	border:1px solid #eee;
+	border-radius:4px;
+}
+
+#canvas {
+	margin-top:10px;
+}
+
+#image,#img_image {
+	display:none;
+}
+
+#files {
+	display:none;
+}
