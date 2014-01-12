@@ -3,6 +3,8 @@
 	<meta charset="utf-8" />
 	<title>Game of Life</title>
 	<link rel="stylesheet" type="text/css" href="CSS/style.css" >
+	<script type="text/javascript" src="JS/filesaver.js"></script>
+	<script type="text/javascript" src="JS/canvas-toBlob.js"></script>
 </head>
 <body>
 	<a href="https://github.com/Wikunia"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
@@ -15,15 +17,18 @@
       <option value="LWSS">Lightweight spaceship</option>
       <option>Pulsar</option>
       <option value="Gun">Glider gun</option>
+      <option>Stripes</option>
       <option>Image</option>
     </select><br>
-	<input type="file" id="files" name="files[]" multiple /><br>
+	<input type="file" id="files" name="files[]" multiple />
 	<br><span id="start" class="button" onclick="start()">Start</span>
 	</div>
 	<span id="stop" class="button"
 	 onclick="stop()">Stop
 	</span><br>
 	<canvas id="canvas" width="1000" height="450"></canvas><br>
+	<div class="button save" onclick="save()">Save as png</div>
+	
 	<canvas id="image" width="250" height="112"></canvas><br>
 	<img id="img_image" />
 
@@ -54,7 +59,6 @@
 
 	  document.getElementById('files').addEventListener('change', handleFileSelect, false);	
 	</script>
-	
 	<script src="JS/gameoflife.js"></script>
 	<script src="JS/index.js"></script>
 </body>

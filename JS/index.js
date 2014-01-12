@@ -1,4 +1,5 @@
-var gameoflife = new GoL(document.getElementById("canvas").getContext("2d"));
+var ctx = document.getElementById('canvas').getContext("2d");
+var gameoflife = new GoL(ctx);
 
 var id_config = document.getElementById('config');
 id_config.onchange = function() {
@@ -30,4 +31,12 @@ function stop() {
 	document.getElementById("user_input").style.display = "inline";
 	document.getElementById("stop").style.display = "none";
 }
+
+ /* Save diagram */
+	function save() {
+		var canvas = document.getElementById("canvas");
+		canvas.toBlob(function(blob) {
+			saveAs(blob, "GoL.png");
+		});
+	}; 
 

@@ -119,6 +119,13 @@ window.GoL = function(context) {
 				set_alive(Math.floor(width/8)+21,Math.floor(height/8)-2);			
 				
 				break;
+			case "Stripes": 
+				for (var i = 0; i < Math.floor(width/4); i=i+2) {
+					for (var j = 0; j < Math.floor(height/4); j++) {
+						set_alive(i,j);
+					}
+				}			
+				break;
 			case "Image":
 				
 				var img = new Image();
@@ -146,11 +153,12 @@ window.GoL = function(context) {
 				img.src = document.getElementById("img_image").src;				
 		}
 
+		
 		var i = 0;
 		setTimeout(function () {
 			get_next_step(1);
 		}, timeout);
-
+		
 	}
 	
 
