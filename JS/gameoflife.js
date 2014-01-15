@@ -134,7 +134,12 @@ window.GoL = function(context) {
 				   
 				   var imageData = document.getElementById("image").getContext("2d").getImageData(0, 0,  Math.floor(width/4), Math.floor(height/4));
 				
+					var lightness_max = 0;
+					var lightness_min = 255;
+					var lightness_array = new Array(Math.floor(width/4));
+				
 					for (var x = 0; x < Math.floor(width/4); x++) {
+						lightness_array[x] = new Array(Math.floor(height/4));
 						for (var y = 0; y < Math.floor(height/4); y++) {
 							var lightness = 0;
 							var index = (y*imageData.width + x) * 4;
@@ -142,10 +147,18 @@ window.GoL = function(context) {
 							var green = parseInt(imageData.data[index + 1]);
 							var blue = parseInt(imageData.data[index + 2]);
 							lightness = parseInt((0.2126*red) + (0.7152*green) + (0.0722*blue));
-							if (lightness <= 127) {
+							if (lightness > lightness_max) { lightness_max = lightness; }
+							if (lightness < lightness_min) { lightness_min = lightness; }
+							lightness_array[x][y] = lightness;							
+						}
+					}
+					med_lightness = 0.5*(lightness_max+lightness_min);
+					
+					for (var x = 0; x < Math.floor(width/4); x++) {
+						for (var y = 0; y < Math.floor(height/4); y++) {
+							if (lightness_array[x][y] <= med_lightness) {
 								set_alive(x,y);			
 							}
-							
 						}
 					}
 				
